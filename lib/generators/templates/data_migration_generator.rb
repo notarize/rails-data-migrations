@@ -7,6 +7,10 @@ class ClassName < ActiveRecord::DataMigration
 
   sig { void }
   def up
+    Rails.logger.info('starting TODO-message')
+
     # put your code to modify data and output results here
+
+    Rails.logger.info('finished TODO-message')
   end
 end
