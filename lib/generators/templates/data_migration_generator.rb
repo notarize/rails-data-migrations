@@ -1,4 +1,5 @@
 # typed: strict
+# frozen_string_literal: true
 
 class ClassName < ActiveRecord::DataMigration
   extend T::Sig
