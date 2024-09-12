@@ -3,7 +3,8 @@
 module RailsDataMigrations
   module SharedMethods
     def table_name
-      "#{ActiveRecord::Base.table_name_prefix}#{ENV.fetch('DATA_MIGRATIONS_TABLE_NAME', 'data_migrations')}#{ActiveRecord::Base.table_name_suffix}"
+      tbl_name = ENV.fetch('DATA_MIGRATIONS_TABLE_NAME', 'data_migrations')
+      "#{ActiveRecord::Base.table_name_prefix}#{tbl_name}#{ActiveRecord::Base.table_name_suffix}"
     end
 
     def index_name
@@ -23,7 +24,8 @@ module RailsDataMigrations
         include SharedMethods
         def create_table
           ::ActiveRecord::SchemaMigration.define_method(:table_name) do
-            "#{::ActiveRecord::Base.table_name_prefix}#{ENV.fetch('DATA_MIGRATIONS_TABLE_NAME', 'data_migrations')}#{::ActiveRecord::Base.table_name_suffix}"
+            tbl_name = ENV.fetch('DATA_MIGRATIONS_TABLE_NAME', 'data_migrations')
+            "#{::ActiveRecord::Base.table_name_prefix}#{tbl_name}#{::ActiveRecord::Base.table_name_suffix}"
           end
 
           ::ActiveRecord::Base.connection.schema_migration.create_table

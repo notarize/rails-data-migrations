@@ -5,10 +5,10 @@ class ClassName < ActiveRecord::DataMigration
   disable_ddl_transaction!
 
   def up
-    Rails.logger.info('starting TODO-message')
+    # Rails.logger.info('starting TODO-message')
 
     # put your code to modify data and output results here
 
-    Rails.logger.info('finished TODO-message')
+    # Rails.logger.info('finished TODO-message')
   end
 end
