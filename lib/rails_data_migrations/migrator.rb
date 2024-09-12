@@ -34,7 +34,7 @@ module RailsDataMigrations
       end
 
       def list_migrations
-        ::ActiveRecord::MigrationContext.new(migrations_path).migrations
+        ::ActiveRecord::MigrationContext.new(migrations_paths).migrations
       end
 
       def list_pending_migrations
