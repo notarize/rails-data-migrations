@@ -1,12 +1,9 @@
-# typed: strict
+# typed: true
 # frozen_string_literal: true
 
 class ClassName < ActiveRecord::DataMigration
-  extend T::Sig
-
   disable_ddl_transaction!
 
-  sig { void }
   def up
     Rails.logger.info('starting TODO-message')
 
