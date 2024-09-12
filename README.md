@@ -43,17 +43,16 @@ You can change the migration folder by setting the DATA_MIGRATIONS_PATH environm
 ```ruby
 DATA_MIGRATIONS_PATH=new/path
 ```
-You can also change the table and index names by setting the corresponding environment variables:
+You can also change the table name by setting the corresponding environment variables:
 ```ruby
 DATA_MIGRATIONS_TABLE_NAME=new_table_name
-DATA_MIGRATIONS_INDEX_NAME=new_index_name
 ```
 This can enable more complex use cases, such as data migrations intended for different contexts,
 or running multiple sets of data migrations in a specific order. It may also avoid conflict with existing path or table names
 
 ## Rails Support
 
-Rails 4.0 and higher
+Rails 7.2 and higher
 
 ## Installation
 
