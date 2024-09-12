@@ -43,9 +43,10 @@ module RailsDataMigrations
       end
 
       def run_migration(direction, version)
-        schema_migration = ::ActiveRecord::Base.connection_pool.schema_migration
+        connection_pool = ActiveRecord::Tasks::DatabaseTasks.migration_connection_pool
+        schema_migration = ActiveRecord::SchemaMigration.new(connection_pool)
         schema_migration.define_singleton_method(:table_name) { ::RailsDataMigrations::LogEntry.table_name }
-        internal_metadata = ::ActiveRecord::Base.connection_pool.internal_metadata
+        internal_metadata = ActiveRecord::InternalMetadata.new(connection_pool)
         new(direction, list_migrations, schema_migration, internal_metadata, version).run
       end
     end
