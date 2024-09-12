@@ -7,10 +7,15 @@ module RailsDataMigrations
     end
 
     def self.create_table
+      schema_migration_instance.create_table
+    end
+
+    def self.schema_migration_instance
       connection_pool = ActiveRecord::Tasks::DatabaseTasks.migration_connection_pool
       schema_migration = ActiveRecord::SchemaMigration.new(connection_pool)
-      schema_migration.define_singleton_method(:table_name) { ::RailsDataMigrations::LogEntry.table_name }
-      schema_migration.create_table
+      schema_migration.define_singleton_method(:table_name) { LogEntry.table_name }
+      schema_migration.instance_variable_set(:@arel_table, Arel::Table.new(LogEntry.table_name))
+      schema_migration
     end
   end
 end
