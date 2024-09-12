@@ -3,7 +3,7 @@
 module RailsDataMigrations
   class LogEntry < ::ActiveRecord::Base
     def self.table_name
-      ENV.fetch("DATA_MIGRATIONS_TABLE_NAME", "data_migrations")
+      ENV.fetch('DATA_MIGRATIONS_TABLE_NAME', 'data_migrations')
     end
 
     def self.create_table

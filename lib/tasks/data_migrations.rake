@@ -6,11 +6,7 @@ namespace :data do
   def apply_single_migration(direction, version)
     raise 'VERSION is required' unless version
 
-    RailsDataMigrations::Migrator.run_migration(
-      direction,
-      RailsDataMigrations::Migrator.migrations_path,
-      version.to_i
-    )
+    RailsDataMigrations::Migrator.run_migration(direction, version.to_i)
   end
 
   task init_migration: :environment do

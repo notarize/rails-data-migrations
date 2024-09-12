@@ -2,7 +2,7 @@
 
 module RailsDataMigrations
   class Migrator < ::ActiveRecord::Migrator
-    self.migrations_paths = [ENV.fetch("DATA_MIGRATIONS_PATH", "db/data_migrations")]
+    self.migrations_paths = [ENV.fetch('DATA_MIGRATIONS_PATH', 'db/data_migrations')]
 
     MIGRATOR_SALT = 2053462855
 
@@ -17,7 +17,7 @@ module RailsDataMigrations
     end
 
     class << self
-      def get_all_versions
+      def get_all_versions # rubocop:disable Naming/AccessorMethodName
         if LogEntry.table_exists?
           LogEntry.all.map { |x| x.version.to_i }.sort
         else
@@ -42,7 +42,7 @@ module RailsDataMigrations
         list_migrations.reject { |m| already_migrated.include?(m.version) }
       end
 
-      def run_migration(direction, migrations_path, version)
+      def run_migration(direction, version)
         schema_migration = ::ActiveRecord::Base.connection_pool.schema_migration
         schema_migration.define_singleton_method(:table_name) { ::RailsDataMigrations::LogEntry.table_name }
         internal_metadata = ::ActiveRecord::Base.connection_pool.internal_metadata
