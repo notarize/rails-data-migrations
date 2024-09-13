@@ -2,8 +2,6 @@
 
 module RailsDataMigrations
   class Migrator < ::ActiveRecord::Migrator
-    self.migrations_paths = [ENV.fetch('DATA_MIGRATIONS_PATH', 'db/data_migrations')]
-
     MIGRATOR_SALT = 2053462855
 
     def record_version_state_after_migrating(version)
@@ -31,6 +29,10 @@ module RailsDataMigrations
 
       def schema_migrations_table_name
         LogEntry.table_name
+      end
+
+      def migrations_paths
+        [ENV.fetch('DATA_MIGRATIONS_PATH', 'db/data_migrations')]
       end
 
       def list_migrations
