@@ -19,7 +19,7 @@ RSpec.configure do |config|
     RailsDataMigrations::LogEntry.delete_all
 
     # stub migrations folder
-    allow(RailsDataMigrations::Migrator).to receive(:migrations_path).and_return('spec/db/data-migrations')
+    allow(RailsDataMigrations::Migrator).to receive(:migrations_paths).and_return(['spec/db/data-migrations'])
 
     # remove migration files
     `rm -rf spec/db/data-migrations`
