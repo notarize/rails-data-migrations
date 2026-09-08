@@ -19,12 +19,14 @@ Gem::Specification.new do |spec|
   end
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 3.1.0'
+  spec.required_ruby_version = '>= 3.4.0'
 
   spec.add_runtime_dependency 'rails', '>= 7.2.0'
   spec.add_runtime_dependency 'sorbet-runtime'
 
   spec.add_development_dependency 'appraisal', '~> 2.1'
   spec.add_development_dependency 'rake', '>= 12.3.3'
-  spec.add_development_dependency 'rspec', '3.5.0'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rspec-rails'
+  spec.add_development_dependency 'rspec-sorbet'
 end

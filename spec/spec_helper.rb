@@ -2,9 +2,14 @@
 
 require 'rails/generators'
 require 'rake'
+require 'rspec/sorbet'
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'rails-data-migrations'
+
+class Module
+  include T::Sig
+end
 
 ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: ':memory:'
 
