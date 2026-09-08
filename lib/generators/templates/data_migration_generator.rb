@@ -2,8 +2,6 @@
 # frozen_string_literal: true
 
 class ClassName < ActiveRecord::DataMigration
-  extend T::Helpers
-
   disable_ddl_transaction!
 
   sig { void }
